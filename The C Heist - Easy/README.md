@@ -4,7 +4,10 @@ this challenge was the first one with over 100 points so i got serious . m0ngi g
 lets look up at the challenge in IDA . 
 
 
-![ida](/images/ida.png)
+
+<p align="center">
+    <img src="/images/ida.png"><br/>
+    </p>
 
 we see that the program offers two functionalities : 
     * read 0x12c=300 bytes int buf variable when its declared size is 264 . you guessed it right . Buffer overflow 
