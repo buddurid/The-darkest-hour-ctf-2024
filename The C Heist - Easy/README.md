@@ -16,12 +16,15 @@ we could overwrite v4 with an adress to system or execv if we we could and v6 to
 
 its time to rely on libc (the attaque name is ret2libc if you wanna read more about it) . Well in most of the cases , and decided in compilation by the user , the program includes a huge library called libc and it contains everything you can dream of , including endless functions like system and strings like '/bin/sh' . 
 
-
+![vmmap] (/images/vmmap.png)
 
 
 
 But the libc is not loaded in the same address . and if we could know where libc is loaded , its just GG . we get the location of system and string '/bin/sh' within libc and put them in v4 and v6 to execute(system('/bin/sh')). 
-how could we leak it ? well we can call puts as we have its location as shown in picture and we can pass as argument a pointer that we will point to a lcoation within libc in execution time . one of those is the 0x404018 when we disas puts before exection . that address -in brief- is called got entry and every function that ends @plt has one .the value that it has is the location of that function the libc . so if we pass puts(0x404018) it will print whatever is in 0x404018 and its the puts libc function in this example . i ended up using the read entry from read@plt . 
+how could we leak it ? well we can call puts as we have its location as shown in picture and we can pass as argument a pointer that we will point to a lcoation within libc in execution time . one of those is the 0x404018 when we disas puts before exection . that address -in brief- is called got entry and every function that ends @plt has one .the value that it has is the location of that function the libc . so if we pass puts(0x404018) it will print whatever is in 0x404018 and its the puts libc function in this example . i ended up using the read entry from read@plt .
+
+![plt_got] (/images/got-plt.png)
+
 
 once we do that we write a few python lines that greps whatever the puts prints , transfer it into hex and then calculate the libc base address . 
 
