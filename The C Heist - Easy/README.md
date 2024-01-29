@@ -4,11 +4,7 @@ this challenge was the first one with over 100 points so i got serious . m0ngi g
 lets look up at the challenge in IDA . 
 
 
-
-
-
-
-
+![ida](https://www.facebook.com/messenger_media/?attachment_id=886713676519731&message_id=mid.%24cAABa9i18eC2TiGrYNGNVyWOuozBW&thread_id=100013371586605)
 
 we see that the program offers two functionalities : 
     * read 0x12c=300 bytes int buf variable when its declared size is 264 . you guessed it right . Buffer overflow 
