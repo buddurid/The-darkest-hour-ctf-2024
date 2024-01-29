@@ -1,0 +1,18 @@
+version: '3'
+services:
+  heist:
+    build: .
+    image: heist
+    container_name: heist
+    ports:
+      - 5000:5000
+    environment:
+      FLAG: Securinets{flag}
+      PORT: 5000
+      
+    healthcheck:
+      test: ["CMD", "true"]
+      interval: 1s
+      timeout: 1s
+      retries: 3
+
